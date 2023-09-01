@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 
-import { fetchUsers } from "../api/endpoints";
-import { ModalContext } from "../features/bmiCalculator/modalContext";
+import {fetchUsers} from "../api/endpoints";
+import {ModalContext} from "../features/bmiCalculator/modalContext";
 import {createRandomUserData} from "../helpers/helpers";
 
 function UsersList() {
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { handleModal } = useContext(ModalContext)
+    const {handleModal} = useContext(ModalContext)
 
-    function handleClick (user) {
+    function handleClick(user) {
         handleModal(user)
     }
 
@@ -34,11 +34,11 @@ function UsersList() {
     }
 
     return (
-        <>
-            <ul className="divide-y divide-gray-100 mx-5">
+        <div className="py-8 bg-zinc-200">
+            <ul className="divide-y divide-gray-100 flex items-center justify-center flex-col">
                 {userData.map((user) => {
                     return (
-                        <li key={user.email} className="flex justify-between gap-x-6 py-5">
+                        <li key={user.email} className="flex justify-between items-center gap-x-6 p-10 mb-5 shadow-md rounded-md bg-zinc-50 max-w-3xl w-full">
                             <div className="flex min-w-0 gap-x-4">
                                 <img className="h-12 w-12 flex-none rounded-full bg-gray-50"
                                      src={user.picture.thumbnail}
@@ -50,14 +50,16 @@ function UsersList() {
                                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">Weight: {user.weight} kg</p>
                                 </div>
                             </div>
-                            <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <button onClick={() => handleClick(user)}>Calculate BMI</button>
+                            <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end ">
+                                <div>
+                                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={() => handleClick(user)}>Calculate BMI</button>
+                                </div>
                             </div>
                         </li>
                     )
                 })}
             </ul>
-        </>
+        </div>
     )
 }
 
