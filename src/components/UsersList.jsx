@@ -60,7 +60,7 @@ function UsersList() {
                                 <img className="h-12 w-12 flex-none rounded-full bg-gray-50"
                                      src={user.picture.thumbnail}
                                      alt=""/>
-                                <div className="min-w-0 flex-auto">
+                                <div className="min-w-0 flex-auto w-6/12">
                                     <p className="text-sm font-semibold leading-6 text-gray-900">{user.name.title} {user.name.first} {user.name.last}</p>
                                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">Wiek: {user.dob.age}</p>
                                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">Wzrost: {user.height} cm</p>
@@ -69,7 +69,7 @@ function UsersList() {
                             </div>
                             <div>
                                 <button
-                                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'
+                                    className='bg-blue-500 text-xs hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'
                                     onClick={() => handleClick(user)}>Oblicz BMI
                                 </button>
                             </div>
